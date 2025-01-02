@@ -11,14 +11,10 @@ interface CardSlotProps {
 export function CardSlot({ position, onClick, card }: CardSlotProps) {
   return (
     <div 
-      className={`card-slot ${position} ${card ? 'occupied' : ''}`}
+      className={`card-slot ${position}`}
       onClick={onClick}
     >
-      {card && (
-        <div className="card-container">
-          <CardComponent card={card} />
-        </div>
-      )}
+      {card && <CardComponent card={card} />}
     </div>
   );
 }

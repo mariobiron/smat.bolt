@@ -1,13 +1,43 @@
+.game-board {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+  background-color: #f5f5f5;
+}
+
+.play-area {
+  flex: 1;
+  display: grid;
+  grid-template-areas:
+    ". top ."
+    "left center right"
+    ". bottom .";
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  min-height: 400px;
+  grid-template-columns: 90px 40px 90px;
+  grid-template-rows: 90px 90px 90px;
+}
+
 .card {
   width: 60px;
   height: 90px;
   border-radius: 4px;
-  overflow: hidden;
   background-color: #cc0000;
+  cursor: pointer;
 }
 
 .card.selected {
   border: 2px solid #ffd700;
+}
+
+.card-back {
+  background-image: url('/cards/back.png');
+  background-size: cover;
 }
 
 .card-slot {
@@ -15,49 +45,60 @@
   height: 90px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
-  margin: 2px;
-  position: relative;
-}
-
-.card-slot.occupied {
-  background-color: transparent;
-}
-
-.card-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.play-area {
-  display: grid;
-  grid-template-areas:
-    ". top ."
-    "left . right"
-    ". bottom .";
-  gap: 4px;
-  padding: 10px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
-.card-slot.top { grid-area: top; }
+.card-slot.top { 
+  grid-area: top;
+  justify-self: center;
+}
+
 .card-slot.left { 
   grid-area: left;
   transform: rotate(90deg);
+  justify-self: end;
 }
+
 .card-slot.right { 
   grid-area: right;
   transform: rotate(-90deg);
+  justify-self: start;
 }
-.card-slot.bottom { grid-area: bottom; }
+
+.card-slot.bottom { 
+  grid-area: bottom;
+  justify-self: center;
+}
+
+.player-section {
+  padding: 10px;
+  background-color: #ffffff;
+}
 
 .player-hand {
   display: flex;
   gap: 4px;
-  padding: 10px;
+  padding: 5px;
   overflow-x: auto;
-  background-color: #ffffff;
+}
+
+.player-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+
+.player-info h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-count {
+  font-size: 0.9rem;
+  color: #666;
 }

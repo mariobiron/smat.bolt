@@ -1,21 +1,46 @@
 import { useState, useEffect } from 'react';
 import { Card, Position } from '../models/Card';
+import { Player } from '../models/Player';
 import { generateInitialDeck } from '../utils/deckUtils';
 
-export function useGameState() {
-  const [playerHand, setPlayerHand] = useState<Card[]>([]);
-  const [placedCards, setPlacedCards] = useState<Map<Position, Card>>(new Map());
+interface GameState {
+  players: Player[];
+  currentPlayerIndex: number;
+  placedCards: Map<Position, Card>;
+}
 
-  useEffect(() => {
+export function useGameState() {
+  const [gameState, setGameState] = useState<GameState>(() => {
     const deck = generateInitialDeck();
-    const initialHand = deck.slice(0, 7); // Deal 7 cards
-    setPlayerHand(initialHand);
-  }, []);
+    
+    // Deal 7 cards to each player
+    const player1Hand = deck.slice(0, 7);
+    const player2Hand = deck.slice(7, 14);
+    
+    return {
+      players: [
+        { id: '1', name: 'Player 1', hand: player1Hand },
+        { id: '2', name: 'Player 2', hand: player2Hand }
+      ],
+      currentPlayerIndex: 0,
+      placedCards: new Map()
+    };
+  });
+
+  const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+
+  const nextTurn = () => {
+    setGameState(prev => ({
+      ...prev,
+      currentPlayerIndex: (prev.currentPlayerIndex + 1) % prev.players.length
+    }));
+  };
 
   return {
-    playerHand,
-    placedCards,
-    setPlayerHand,
-    setPlacedCards,
+    players: gameState.players,
+    currentPlayer,
+    placedCards: gameState.placedCards,
+    nextTurn,
+    setGameState
   };
 }
