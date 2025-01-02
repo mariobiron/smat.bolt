@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout rows="*, auto" class="game-board">
+        <!-- Playing area -->
+        <GridLayout row="0" columns="*, auto, *" rows="*, auto, *" class="play-area">
+            <!-- Top position -->
+            <ContentView row="0" col="1" class="card-slot top"/>
+            
+            <!-- Left and right positions -->
+            <ContentView row="1" col="0" class="card-slot left"/>
+            <ContentView row="1" col="2" class="card-slot right"/>
+            
+            <!-- Bottom position -->
+            <ContentView row="2" col="1" class="card-slot bottom"/>
+        </GridLayout>
+
+        <!-- Player's hand -->
+        <ScrollView row="1" orientation="horizontal" class="player-hand">
+            <StackLayout orientation="horizontal">
+                <Repeater items="{{ playerHand }}">
+                    <Repeater.itemTemplate>
+                        <ContentView>
+                            <card:CardComponent card="{{ $value }}"/>
+                        </ContentView>
+                    </Repeater.itemTemplate>
+                </Repeater>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

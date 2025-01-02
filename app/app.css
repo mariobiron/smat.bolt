@@ -1,0 +1,21 @@
+@import '@nativescript/theme/css/core.css';
+@import '@nativescript/theme/css/default.css';
+
+.card {
+    background-color: #cc0000;
+    border-radius: 8;
+}
+
+.card-slot {
+    width: 80;
+    height: 120;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8;
+    margin: 4;
+}
+
+.player-hand {
+    background-color: #ffffff;
+    padding: 10;
+    height: 140;
+}

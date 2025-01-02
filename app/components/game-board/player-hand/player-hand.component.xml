@@ -1,0 +1,13 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+    <ScrollView orientation="horizontal" class="player-hand">
+        <StackLayout orientation="horizontal">
+            <Repeater items="{{ cards }}">
+                <Repeater.itemTemplate>
+                    <ContentView>
+                        <card:CardComponent card="{{ $value }}"/>
+                    </ContentView>
+                </Repeater.itemTemplate>
+            </Repeater>
+        </StackLayout>
+    </ScrollView>
+</Page>

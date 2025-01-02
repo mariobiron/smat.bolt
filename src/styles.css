@@ -1,0 +1,63 @@
+.card {
+  width: 60px;
+  height: 90px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #cc0000;
+}
+
+.card.selected {
+  border: 2px solid #ffd700;
+}
+
+.card-slot {
+  width: 60px;
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin: 2px;
+  position: relative;
+}
+
+.card-slot.occupied {
+  background-color: transparent;
+}
+
+.card-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.play-area {
+  display: grid;
+  grid-template-areas:
+    ". top ."
+    "left . right"
+    ". bottom .";
+  gap: 4px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-slot.top { grid-area: top; }
+.card-slot.left { 
+  grid-area: left;
+  transform: rotate(90deg);
+}
+.card-slot.right { 
+  grid-area: right;
+  transform: rotate(-90deg);
+}
+.card-slot.bottom { grid-area: bottom; }
+
+.player-hand {
+  display: flex;
+  gap: 4px;
+  padding: 10px;
+  overflow-x: auto;
+  background-color: #ffffff;
+}

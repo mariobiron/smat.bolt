@@ -1,0 +1,9 @@
+.card {
+    background-color: #cc0000;
+    border-radius: 8;
+}
+
+.card.selected {
+    border-width: 2;
+    border-color: #ffd700;
+}

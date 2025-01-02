@@ -1,0 +1,8 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd">
+    <GridLayout width="80" height="120" 
+                class="card" 
+                class.selected="{{ isSelected }}"
+                rotate="{{ rotation }}">
+        <Image src="{{ card.imagePath }}" stretch="aspectFill"/>
+    </GridLayout>
+</Page>
